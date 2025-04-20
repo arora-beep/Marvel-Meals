@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+  }
+  
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #202020;
+    color: #fff;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: crimson;
+  }
+  
+  .nav-links a {
+    margin: 0 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: crimson;
+  }
+  
+  .items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .card {
+    background: white;
+    color: #444;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .home, .about, .form-section {
+    padding: 40px;
+    text-align: center;
+  }
+  
+  input, textarea {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background: crimson;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: darkred;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
