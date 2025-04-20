@@ -8,7 +8,7 @@ const Meals = () => {
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_MEAL_API)
+      .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
       .then((res) => setMeals(res.data.meals))
       .catch(console.error);
   }, []);
