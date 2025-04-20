@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <nav className="nav-bar">
+        Hi Everyone
       <h1 className="logo">Marvel Meals</h1>
       <div className="nav-links">
         <Link to="/">Home</Link>
