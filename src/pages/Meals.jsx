@@ -1,4 +1,3 @@
-// src/pages/Meals.jsx
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -6,7 +5,7 @@ import { Link } from "react-router-dom";
 const Meals = () => {
   const [meals, setMeals] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const mealsPerPage = 5;
+  const mealsPerPage = 10; // Updated to 10 food cards per page
 
   useEffect(() => {
     axios
@@ -39,7 +38,7 @@ const Meals = () => {
           🍴 Marvel Seafood Specials
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center">
           {currentMeals.map(({ strMeal, strMealThumb, idMeal }) => (
             <Link to={`/meal/${idMeal}`} key={idMeal} className="w-full">
               <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition transform hover:scale-105 shadow-md">
@@ -50,9 +49,14 @@ const Meals = () => {
                 />
                 <div className="p-3 text-center">
                   <h2 className="text-lg font-bold text-yellow-400">{strMeal}</h2>
-                  <p className="text-sm text-gray-300">
-                    Tap for the recipe!
-                  </p>
+                  <p className="text-sm text-gray-300">Tap for the recipe!</p>
+                  {/* Marvel character link */}
+                  <Link 
+                    to="/marvel-character"
+                    className="text-blue-400 text-xs hover:underline mt-2 block"
+                  >
+                    Learn about Iron Man
+                  </Link>
                 </div>
               </div>
             </Link>
