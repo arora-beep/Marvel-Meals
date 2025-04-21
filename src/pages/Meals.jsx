@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import MealCard from "../components/MealCard"; // Make sure this path is correct based on your project structure
+import MealCard from "../components/MealCard"; 
 
 const Meals = () => {
   const [meals, setMeals] = useState([]);
@@ -34,14 +34,14 @@ const Meals = () => {
           🍴 Marvel Seafood Specials
         </h1>
 
-        {/* Meal Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center">
+        
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-8 justify-items-center">
           {currentMeals.map((meal) => (
             <MealCard key={meal.idMeal} {...meal} />
           ))}
         </div>
 
-        {/* Pagination Controls */}
+    
         <div className="flex justify-center mt-10 space-x-6">
           <button
             onClick={handlePrev}

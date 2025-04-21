@@ -50,7 +50,7 @@ const MealDetails = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-950 text-white flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-5xl bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
-        {/* Back Button */}
+   
         <div className="p-4 bg-gray-900 text-center">
           <Link
             to="/meals"
@@ -60,7 +60,6 @@ const MealDetails = () => {
           </Link>
         </div>
 
-        {/* Header */}
         <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-500 py-6 px-4 text-center">
           <h2 className="text-4xl font-extrabold text-white tracking-wide mb-1">
             🍽️ {meal.strMeal}
@@ -70,9 +69,9 @@ const MealDetails = () => {
           </p>
         </div>
 
-        {/* Main Content */}
+
         <div className="p-6 flex flex-col lg:flex-row gap-10 justify-center items-center">
-          {/* Meal Image */}
+
           <div className="w-full lg:w-1/2 flex justify-center">
             <img
               src={meal.strMealThumb}
@@ -81,7 +80,6 @@ const MealDetails = () => {
             />
           </div>
 
-          {/* Meal Details */}
           <div className="w-full lg:w-1/2">
             <div className="text-center lg:text-left mb-4 space-y-2">
               <p>
@@ -103,14 +101,13 @@ const MealDetails = () => {
           </div>
         </div>
 
-        {/* Instructions */}
         <div className="px-6 pb-10">
           <h3 className="text-yellow-300 text-2xl font-bold mb-3 text-center">📜 Instructions</h3>
           <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line bg-gray-900 p-4 rounded-xl border border-gray-700 text-justify">
             {meal.strInstructions}
           </p>
 
-          {/* YouTube Tutorial */}
+
           {meal.strYoutube && (
             <div className="mt-6 text-center">
               <h3 className="text-blue-400 text-xl font-bold mb-2">🎥 Watch Tutorial</h3>
