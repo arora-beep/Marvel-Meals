@@ -7,6 +7,10 @@ import Meals from "./pages/Meals";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import "./style.css";
+import SearchPage from "./pages/SearchPage";
+
+
+
 
 const App = () => {
   return (
@@ -16,6 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/meals" element={<Meals />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
