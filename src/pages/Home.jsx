@@ -1,27 +1,24 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const navigate = useNavigate();
-
   return (
-    <section className="home bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white min-h-screen flex flex-col items-center justify-center p-6 animate-fade-in">
+    <section className="home bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white min-h-screen flex flex-col items-center justify-center px-6 py-12">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg"
         alt="Marvel Logo"
-        className="w-48 mb-8 drop-shadow-lg animate-bounce"
+        className="w-44 mb-6 animate-pulse"
       />
-      <h2 className="text-5xl font-extrabold mb-4 text-red-500 text-center drop-shadow-md tracking-wide">
+      <h1 className="text-5xl font-extrabold text-red-600 text-center mb-4 tracking-widest">
         Welcome to Marvel Meals
-      </h2>
-      <p className="text-xl text-center max-w-xl text-gray-300 leading-relaxed mb-6">
-        Unleash your hunger with <span className="text-yellow-400 font-semibold">super-powered seafood</span> inspired by Earth’s mightiest heroes. Fuel your inner Avenger, one meal at a time!
+      </h1>
+      <p className="text-xl text-gray-300 text-center max-w-2xl mb-6">
+        Fuel your hunger with dishes inspired by Earth's mightiest heroes. From Wakandan seafood to Asgardian platters, we bring the power of taste!
       </p>
-      <button
-        onClick={() => navigate("/meals")}
-        className="mt-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform duration-300"
-      >
-        🍴 Explore Meals
-      </button>
+      <Link to="/meals">
+        <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-bold text-lg shadow-lg transition duration-300">
+          🍽️ Explore Meals
+        </button>
+      </Link>
     </section>
   );
 };
