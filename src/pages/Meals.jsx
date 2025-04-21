@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Meals = () => {
   const [meals, setMeals] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const mealsPerPage = 10; // Updated to 10 food cards per page
+  const mealsPerPage = 8; // Set 6-8 meals per page
 
   useEffect(() => {
     axios
@@ -29,9 +29,6 @@ const Meals = () => {
 
   return (
     <div className="bg-gradient-to-b from-black via-gray-900 to-gray-800 min-h-screen text-white px-4 py-10 flex justify-center">
-      {/* Left Divider */}
-      <div className="hidden md:flex w-10 bg-red-700 rounded-l-lg shadow-xl" />
-
       {/* Main Content */}
       <div className="max-w-6xl w-full px-4">
         <h1 className="text-3xl md:text-4xl font-extrabold text-center text-red-500 mb-10">
@@ -41,22 +38,15 @@ const Meals = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center">
           {currentMeals.map(({ strMeal, strMealThumb, idMeal }) => (
             <Link to={`/meal/${idMeal}`} key={idMeal} className="w-full">
-              <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition transform hover:scale-105 shadow-md">
+              <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition transform hover:scale-105 shadow-lg hover:shadow-xl">
                 <img
                   src={strMealThumb}
                   alt={strMeal}
                   className="w-full h-40 object-cover"
                 />
-                <div className="p-3 text-center">
+                <div className="p-4 text-center">
                   <h2 className="text-lg font-bold text-yellow-400">{strMeal}</h2>
                   <p className="text-sm text-gray-300">Tap for the recipe!</p>
-                  {/* Marvel character link */}
-                  <Link 
-                    to="/marvel-character"
-                    className="text-blue-400 text-xs hover:underline mt-2 block"
-                  >
-                    Learn about Iron Man
-                  </Link>
                 </div>
               </div>
             </Link>
@@ -68,22 +58,19 @@ const Meals = () => {
           <button
             onClick={handlePrev}
             disabled={currentPage === 1}
-            className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg text-white font-semibold shadow-md disabled:opacity-50 transition"
+            className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg text-white font-semibold shadow-lg disabled:opacity-50 transition-all transform hover:scale-105"
           >
             ◀ Previous
           </button>
           <button
             onClick={handleNext}
             disabled={currentPage === totalPages}
-            className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg text-white font-semibold shadow-md disabled:opacity-50 transition"
+            className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg text-white font-semibold shadow-lg disabled:opacity-50 transition-all transform hover:scale-105"
           >
             Next ▶
           </button>
         </div>
       </div>
-
-      {/* Right Divider */}
-      <div className="hidden md:flex w-10 bg-red-700 rounded-r-lg shadow-xl" />
     </div>
   );
 };
