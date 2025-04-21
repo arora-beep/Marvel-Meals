@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const About = () => {
   const [vegCount, setVegCount] = useState(15); // Example count of vegetarian dishes
   const [nonVegCount, setNonVegCount] = useState(20); // Example count of non-vegetarian dishes
