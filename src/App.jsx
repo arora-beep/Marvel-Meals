@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import "./style.css";
 import SearchPage from "./pages/SearchPage";
-
+import MealDetail from "./pages/MealDetail";
 
 
 
@@ -20,6 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/meals" element={<Meals />} />
+          <Route path="/meal/:id" element={<MealDetail />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
