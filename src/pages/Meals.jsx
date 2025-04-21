@@ -1,75 +1,78 @@
-import { useEffect, useState } from "react";
+// src/pages/Meals.jsx
 import axios from "axios";
-
-const marvelQuotes = [
-  "“I can do this all day.” – Captain America",
-  "“Genius, billionaire, playboy, philanthropist.” – Iron Man",
-  "“Wakanda forever!” – Black Panther",
-  "“Hulk smash!” – Hulk",
-  "“With great power comes great responsibility.” – Spider-Man",
-  "“I choose to run toward my problems, not away from them.” – Thor",
-  "“We are Groot.” – Groot",
-  "“I’m always angry.” – Bruce Banner",
-  "“Dormammu, I’ve come to bargain.” – Doctor Strange",
-  "“I am inevitable.” – Thanos"
-];
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Meals = () => {
   const [meals, setMeals] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const mealsPerPage = 3;
 
   useEffect(() => {
-    const fetchMeals = async () => {
-      try {
-        const res = await axios.get(
-          "https://www.themealdb.com/api/json/v1/1/search.php?s=seafood"
-        );
-        setMeals(res.data.meals || []);
-      } catch (error) {
-        console.error("Failed to fetch meals:", error);
-      }
-    };
-
-    fetchMeals();
+    axios
+      .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+      .then((res) => setMeals(res.data.meals))
+      .catch((err) => console.error("Failed to fetch meals", err));
   }, []);
 
+  // Pagination Logic
+  const indexOfLastMeal = currentPage * mealsPerPage;
+  const indexOfFirstMeal = indexOfLastMeal - mealsPerPage;
+  const currentMeals = meals.slice(indexOfFirstMeal, indexOfLastMeal);
+  const totalPages = Math.ceil(meals.length / mealsPerPage);
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
   return (
-    <section className="bg-gray-900 text-white min-h-screen p-8">
-      <h2 className="text-4xl font-bold text-center text-red-500 mb-12">
-        Marvel-Themed Meals
-      </h2>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {meals.map((meal) => {
-          const randomQuote =
-            marvelQuotes[Math.floor(Math.random() * marvelQuotes.length)];
-          return (
-            <div
-              key={meal.idMeal}
-              className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-red-600 transition duration-300 border border-red-700"
-            >
+    <div className="bg-gradient-to-b from-black via-gray-900 to-gray-800 min-h-screen text-white py-10 px-6">
+      <h1 className="text-4xl text-center text-red-600 font-extrabold mb-8">
+        Explore Marvelous Meals 🔥
+      </h1>
+
+      <div className="grid gap-8 max-w-4xl mx-auto">
+        {currentMeals.map(({ strMeal, strMealThumb, idMeal }) => (
+          <Link to={`/meal/${idMeal}`} key={idMeal}>
+            <div className="bg-gray-800 rounded-lg flex items-center gap-4 p-4 shadow-lg hover:bg-gray-700 transition">
               <img
-                src={meal.strMealThumb}
-                alt={meal.strMeal}
-                className="w-full h-48 object-cover"
+                src={strMealThumb}
+                alt={strMeal}
+                className="w-32 h-32 object-cover rounded-md border-2 border-red-500"
               />
-              <div className="p-4">
-                <h3 className="text-xl font-bold text-yellow-300 mb-2">
-                  {meal.strMeal}
-                </h3>
-                <p className="text-sm italic text-gray-400 mb-2">{randomQuote}</p>
-                <a
-                  href={meal.strSource || `https://www.themealdb.com/meal/${meal.idMeal}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md text-white font-semibold transition"
-                >
-                  View Recipe
-                </a>
+              <div>
+                <h2 className="text-xl font-bold text-yellow-400">{strMeal}</h2>
+                <p className="text-sm text-gray-300">
+                  Tap to reveal superhero-level recipes!
+                </p>
               </div>
             </div>
-          );
-        })}
+          </Link>
+        ))}
       </div>
-    </section>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-10 gap-6">
+        <button
+          onClick={handlePrev}
+          disabled={currentPage === 1}
+          className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md disabled:opacity-50"
+        >
+          ◀ Prev
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+          className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md disabled:opacity-50"
+        >
+          Next ▶
+        </button>
+      </div>
+    </div>
   );
 };
 
