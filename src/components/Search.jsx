@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import MealCard from "./MealCard";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -37,17 +38,9 @@ const Search = () => {
         </button>
       </form>
 
-      <div className="mt-6 flex flex-wrap justify-center gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center">
         {results.map((meal) => (
-          <div
-            key={meal.idMeal}
-            className="bg-white rounded-lg shadow-md overflow-hidden w-80"
-          >
-            <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-48 object-cover" />
-            <div className="p-4 text-center">
-              <h3 className="text-xl font-bold text-gray-800">{meal.strMeal}</h3>
-            </div>
-          </div>
+          <MealCard key={meal.idMeal} {...meal} />
         ))}
       </div>
     </div>
